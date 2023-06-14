@@ -4,15 +4,16 @@ window.onload = () => {
   container.setAttribute("class", "container");
   app.appendChild(container);
   
- // Aquí debemos agregar nuestro fetch
-const obtenerPeliculas = async () => {
-  try {
-    const response = await fetch('http://localhost:3031/api/movies');
-    const data = await response.json();
-    
+  // Aquí debemos agregar nuestro fetch
+  const obtenerPeliculas = async () => {
+    try {
+      const response = await fetch('http://localhost:3031/api/movies/');
+      const data = await response.json();
+      
+     
 
     // Código que debemos usar para mostrar los datos en el frontend
-    console.log(data.data);
+    console.log(data);
     data.data.forEach((movie) => {
       const card = document.createElement("div");
       card.setAttribute("class", "card");
@@ -25,6 +26,13 @@ const obtenerPeliculas = async () => {
 
       const duracion = document.createElement("p");
       duracion.textContent = `Duración: ${movie.length}`;
+      
+      const edicion = document.createElement("a");
+      edicion.href = `formulario.html?id=${movie.id}`;
+      edicion.textContent = `Editar`
+      edicion.className = `botonAgregar`
+      
+
 
       container.appendChild(card);
       card.appendChild(h1);
@@ -35,7 +43,9 @@ const obtenerPeliculas = async () => {
         card.appendChild(genero);
       }
       card.appendChild(duracion);
-    });
+      card.appendChild(edicion);
+    }
+    );
   } catch (error) {
     console.log('Error al obtener las películas:', error);
   }
