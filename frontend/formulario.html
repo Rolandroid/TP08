@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Película</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Dosis:400,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <form id="formCreate" class="card formulario">
+        <input type="hidden" name="id">
+        <div>        
+            <label for="title" >Título </label>
+            <p><input type="text" name="title" id="title"></p>
+        </div>
+        <div>
+            <label for="rating">Calificación </label>
+            <p><input type="number" accept="any" name="rating" id="rating" step= "any"></p>
+        </div>
+        <div>
+        <label for="awards">Premios </label>
+        <p><input type="number" name="awards" id="awards"></p>
+        </div>
+        <div>
+            <label for="release_date">Fecha de creación </label>
+            <p><input type="date" name="release_date" id="release_date"></p>
+        </div>
+        <div>
+            <label for="length">Duración en minutos</label>
+            <p><input type="number" name="length" id="length"></p>
+        </div>
+        <div>
+            <label for="release_date">Genero</label>
+            <p><select name="genre" id="genre" >
+            <option value="1">Comedia</option>
+            <option value="2">Terror</option>
+            <option value="3">Drama</option>
+            <option value="4">Accion</option>
+            <option value="5">Ciencia Ficcion</option>
+            <option value="6">Suspenso</option>
+            <option value="7">Animacion</option>
+            <option value="8">Aventura</option>
+            <option value="9">Documentales</option>
+            <option value="10">Infantiles</option>
+            <option value="11">Fantasia</option>
+            <option value="12">Musicales</option>
+
+            </select></p>
+        </div>
+        <br>
+
+        <label for="deleteChek" id="deleteCheklabel">Desea eliminar esta pelicula?
+         <p>Si<input type="checkbox" name="deleteChek" id="deleteChek" ></p></label>
+        </div>
+        
+        <div class="action">
+           <button class="botonAgregar" id="editar">Actualizar</button>
+           <button class="botonAgregar" id="crear" type="submit">Crear</button>
+           
+        </div>
+    </form>
+    <script src="js/formulario.js"></script>
+</body>
+</html>
