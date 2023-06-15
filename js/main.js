@@ -6,7 +6,8 @@ window.onload = () => {
   app.appendChild(container);
   
     favoritas.style = "display:none"
-  if (JSON.parse(sessionStorage.getItem("ids")).length > 0 ){
+
+    if (sessionStorage.getItem("ids") || [].length > 0 ){
     favoritas.style = "display:inline"
    
   }
@@ -17,7 +18,7 @@ window.onload = () => {
       const response = await fetch('http://localhost:3031/api/movies/');
       const data = await response.json();
       
-      let favoriteIds = JSON.parse(sessionStorage.getItem("ids")) || [];
+      let favoriteIds = sessionStorage.getItem("ids") || [];
 
 
     // Código que debemos usar para mostrar los datos en el frontend
@@ -90,7 +91,7 @@ function toggleFavorite(movieId) {
   }else{
     favoriteIds.push(movieId)
   }
-  sessionStorage.setItem("ids", JSON.stringify(favoriteIds))
+  sessionStorage.setItem("ids", favoriteIds)
 }
 
 };
