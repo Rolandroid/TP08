@@ -80,6 +80,7 @@ window.onload = async () => {
         if (response.ok) {
           console.log("El objeto se creó correctamente");
           // Aquí puedes realizar cualquier acción adicional después de crear el objeto
+          window.location.href="home.html"
         } else {
           console.log("Ocurrió un error al crear el objeto");
         }
@@ -104,6 +105,7 @@ window.onload = async () => {
         if (response.ok) {
           console.log("El objeto se editó correctamente");
           // Aquí puedes realizar cualquier acción adicional después de crear el objeto
+          window.location.href="home.html"
         } else {
           console.log("Ocurrió un error al editar el objeto");
         }
@@ -115,9 +117,11 @@ window.onload = async () => {
             'Content-Type': 'application/json'
           }
         });
+
         if (response.ok) {
           console.log("El objeto se Elimino correctamente");
           // Aquí puedes realizar cualquier acción adicional después de crear el objeto
+          window.location.href="home.html"
         } else {
           console.log("Ocurrió un error al crear el objeto");
         }
