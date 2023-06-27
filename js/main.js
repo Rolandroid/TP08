@@ -6,15 +6,14 @@ window.onload = () => {
   app.appendChild(container);
 
   favoritas.style = "display:none";
-  localStorage.setItem("ids", localStorage.getItem("ids") || "");
-
+  
   if (localStorage.getItem("ids").length > 0) {
     favoritas.style = "display:inline";
   }
+  localStorage.setItem("ids", []);
+  
+  let favoriteIds = localStorage.getItem("ids") || "";
 
-  let favoriteIds = localStorage.getItem("ids") ?? [];
-
-  // Aquí debemos agregar nuestro fetch
   const obtenerPeliculas = async () => {
     try {
       const response = await fetch("http://localhost:3031/api/movies/");
@@ -62,9 +61,9 @@ window.onload = () => {
         addButton.addEventListener("click", () => {
           toggleFavorite(movie.id);
           if (favoriteIds.includes(movie.id.toString())) {
-            addButton.textContent = "Agregar a favoritos";
-          } else {
             addButton.textContent = "Remover de favoritos";
+          } else {
+            addButton.textContent = "Agregar a favoritos";
           }
         });
       });
@@ -77,12 +76,12 @@ window.onload = () => {
     const movieIdString = movieId.toString();
     const index = favoriteIds.indexOf(movieIdString);
     if (index > -1) {
-      favoriteIds.splice(index, 1);
+      favoriteIds = favoriteIds.replace(movieIdString, "");
     } else {
-      favoriteIds.push(movieIdString);
+      favoriteIds += movieIdString;
     }
 
-    localStorage.setItem("ids", JSON.stringify(favoriteIds));
+    localStorage.setItem("ids", favoriteIds);
   }
 
   obtenerPeliculas();

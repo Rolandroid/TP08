@@ -18,7 +18,7 @@ window.onload = () => {
 
   let pintarCards = (peliculas) => {
     let data = peliculas.data
-    let ids = JSON.parse(sessionStorage.getItem("ids"))
+    let ids = localStorage.getItem("ids")
 
     if (!ids) {
       const msg = document.createElement("h3")
@@ -55,3 +55,4 @@ window.onload = () => {
     }
   }
 };
+
