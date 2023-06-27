@@ -10,9 +10,12 @@ window.onload = () => {
   if (localStorage.getItem("ids").length > 0) {
     favoritas.style = "display:inline";
   }
-  localStorage.setItem("ids", []);
-  
-  let favoriteIds = localStorage.getItem("ids") || "";
+
+  const listadeFavoritos = []
+  if(!localStorage.getItem("ids")){
+  localStorage.setItem("ids", listadeFavoritos);
+  }
+  let favoriteIds = localStorage.getItem("ids");
 
   const obtenerPeliculas = async () => {
     try {
@@ -62,8 +65,15 @@ window.onload = () => {
           toggleFavorite(movie.id);
           if (favoriteIds.includes(movie.id.toString())) {
             addButton.textContent = "Remover de favoritos";
+            if (localStorage.getItem("ids").length > 0) {
+              favoritas.style = "display:inline";
+            }
           } else {
             addButton.textContent = "Agregar a favoritos";
+            if (localStorage.getItem("ids").length === 0) {
+              favoritas.style = "display:none";
+            }
+            
           }
         });
       });
