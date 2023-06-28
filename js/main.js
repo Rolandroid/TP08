@@ -7,7 +7,7 @@ window.onload = () => {
 
   favoritas.style = "display:none";
   
-  if (!localStorage.getItem("ids")) {
+  if (localStorage.getItem("ids")) {
     favoritas.style = "display:inline";
   }
 
